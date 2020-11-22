@@ -20,8 +20,19 @@ const Search = (props) => {
       });
       setResults(data.query.search);
     };
-    if (term) {
+
+    if (term && !results.length) {
       search();
+    } else {
+      const timeoutId = setTimeout(() => {
+        if (term) {
+          search();
+        }
+      }, 1000);
+
+      return () => {
+        clearInterval(timeoutId);
+      };
     }
   }, [term]);
 

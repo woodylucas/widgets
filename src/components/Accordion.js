@@ -1,8 +1,11 @@
 import React, { Component, useState } from "react";
-
+// useState method: is a hook that gives us access to state inside a functional component
 const Accordion = ({ items }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   const handleClick = (index) => {
     console.log("Title Clicked", index);
+    setActiveIndex(index);
   };
   const renderedItems = items.map((item, index) => {
     return (
@@ -18,7 +21,12 @@ const Accordion = ({ items }) => {
     );
   });
 
-  return <div className="ui styled accordion">{renderedItems}</div>;
+  return (
+    <div className="ui styled accordion">
+      {renderedItems}
+      <h1>{activeIndex}</h1>
+    </div>
+  );
 };
 
 export default Accordion;

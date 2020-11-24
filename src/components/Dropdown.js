@@ -2,6 +2,9 @@ import React from "react";
 
 const Dropdown = ({ options, selected, handleChange }) => {
   const renderedOptions = options.map((option) => {
+    // removes stock from list once clicked
+    if (option.value === selected.value) return null;
+
     return (
       <div
         key={option.value}

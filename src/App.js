@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
 const items = [
   {
@@ -31,20 +31,9 @@ const options = [
   },
 ];
 function App() {
-  const [selected, setSelected] = useState(options[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
   return (
     <div>
-      <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle Button
-      </button>
-      {showDropdown ? (
-        <Dropdown
-          handleChange={setSelected}
-          selected={selected}
-          options={options}
-        />
-      ) : null}
+      <Translate />
     </div>
   );
 }

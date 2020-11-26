@@ -1,7 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ options, selected, handleChange }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    document.body.addEventListener(
+      "click",
+      (event) => {
+        if (ref.current.contains(event.target)) {
+          return;
+        }
+
+        setOpen(false);
+      },
+      { capture: true }
+    );
+  }, []);
 
   const renderedOptions = options.map((option) => {
     // removes stock from list once clicked
@@ -18,7 +33,7 @@ const Dropdown = ({ options, selected, handleChange }) => {
     );
   });
   return (
-    <div className="ui form">
+    <div ref={ref} className="ui form">
       <div className="field">
         <label className="label">Select a Color</label>
         <div

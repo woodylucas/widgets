@@ -5,17 +5,12 @@ const Dropdown = ({ options, selected, handleChange }) => {
   const ref = useRef();
 
   useEffect(() => {
-    document.body.addEventListener(
-      "click",
-      (event) => {
-        if (ref.current.contains(event.target)) {
-          return;
-        }
-
-        setOpen(false);
-      },
-      { capture: true }
-    );
+    document.body.addEventListener("click", (event) => {
+      if (ref.current.contains(event.target)) {
+        return;
+      }
+      setOpen(false);
+    });
   }, []);
 
   const renderedOptions = options.map((option) => {

@@ -41,11 +41,11 @@ const Translate = () => {
       <Dropdown
         label="Select a Language"
         selected={language}
-        onSelectedChange={setLanguage}
+        handleChange={setLanguage}
         options={options}
       />
       <hr />
-      <h3 className="ui header"></h3>
+      <h3 className="ui header">Output</h3>
       <Convert text={text} language={language} />
     </div>
   );

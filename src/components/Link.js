@@ -1,8 +1,12 @@
 import React from "react";
 
 const Link = ({ className, href, children }) => {
+  const handleClick = (evt) => {
+    evt.preventDefault();
+    window.history.pushState({}, "", href);
+  };
   return (
-    <a className={className} href={href}>
+    <a onClick={handleClick} className={className} href={href}>
       {children}
     </a>
   );
